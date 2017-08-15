@@ -20,13 +20,13 @@ fi
 if [ -z "${PLUGIN_EXCLUDE}" ]; then
   EXCLUDE=""
 else
-  EXCLUDE="--exclude $PLUGIN_EXCLUDE"
+  EXCLUDE="--exclude '$PLUGIN_EXCLUDE'"
 fi
 
 if [ -z ${PLUGIN_INCLUDE} ]; then
   INCLUDE=""
 else
-  INCLUDE="--include $PLUGIN_INCLUDE"
+  INCLUDE="--include '$PLUGIN_INCLUDE'"
 fi
 
 if [ ${PLUGIN_DELETE} == true ]; then
@@ -43,7 +43,7 @@ if [ ! -z ${PLUGIN_AWS_SECRET_ACCESS_KEY} ]; then
   AWS_SECRET_ACCESS_KEY=$PLUGIN_AWS_SECRET_ACCESS_KEY
 fi
 
-aws s3 sync --region $PLUGIN_REGION "$PLUGIN_DELETE" "$EXCLUDE" "$INCLUDE" "$PLUGIN_SOURCE" s3://"$PLUGIN_BUCKET""$PLUGIN_TARGET"
+aws s3 sync --region $PLUGIN_REGION "$EXCLUDE" "$INCLUDE" "$PLUGIN_DELETE" "$PLUGIN_SOURCE" s3://"$PLUGIN_BUCKET""$PLUGIN_TARGET"
 
 
 if [ -n "$PLUGIN_CLOUDFRONT_DISTRIBUTION_ID" ]; then
