@@ -14,7 +14,6 @@ Use the S3 sync plugin to synchronize files and folders with an Amazon S3 bucket
 The following is a sample S3 configuration in your .drone.yml file:
 
 ```yaml
-publish:
   s3_sync:
     region: "us-east-1"
     bucket: "my-bucket.s3-website-us-east-1.amazonaws.com"
