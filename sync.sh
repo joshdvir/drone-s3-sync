@@ -17,11 +17,11 @@ if [ -z ${PLUGIN_SOURCE} ]; then
   PLUGIN_SOURCE="./"
 fi
 
-if [ -n "$PLUGIN_EXCLUDE" ]; then
+if [ -n $PLUGIN_EXCLUDE ]; then
   EXCLUDE="--exclude $PLUGIN_EXCLUDE"
 fi
 
-if [ -n "$PLUGIN_INCLUDE" ]; then
+if [ -n $PLUGIN_INCLUDE ]; then
   INCLUDE="--include $PLUGIN_INCLUDE"
 fi
 
