@@ -5,12 +5,12 @@ Use the S3 sync plugin to synchronize files and folders with an Amazon S3 bucket
 * `aws_access_key_id` - amazon key
 * `aws_secret_access_key` - amazon secret key
 * `bucket` - bucket name
-* `region` - bucket region. e.g  defaults to `us-east-1`
-* `source` - location of folder to sync
-* `target` - target folder in your S3 bucket
-* `exclude`- exclude all files or objects from the command that matches the specified pattern.
-* `include`- don't exclude files or objects in the command that match the specified pattern
-* `delete` - deletes files in the target not found in the source
+* `region` - bucket region. (defaults to `us-east-1`)
+* `source` - location of folder to sync. (optional, defaults to `./`)
+* `target` - target folder in your S3 bucket. (optional, defaults to `/`)
+* `exclude`- exclude all files or objects from the command that matches the specified pattern. (optional)
+* `include`- don't exclude files or objects in the command that match the specified pattern. (optional)
+* `delete` - deletes files in the target not found in the source (optional, defaults to `false`)
 * `cloudfront_distribution_id` - (optional) the cloudfront distribution id to invalidate after syncing
 
 The following is a sample S3 configuration in your .drone.yml file:
