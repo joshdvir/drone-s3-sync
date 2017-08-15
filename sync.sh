@@ -1,4 +1,5 @@
 #!/bin/bash
+set -f
 
 if [ -z ${PLUGIN_BUCKET} ]; then
   echo "missing S3 Bucket"
@@ -13,7 +14,7 @@ if [ -z ${PLUGIN_TARGET} ]; then
   PLUGIN_TARGET="/"
 fi
 
-if [ -z "${PLUGIN_SOURCE}" ]; then
+if [ -z ${PLUGIN_SOURCE} ]; then
   PLUGIN_SOURCE="./"
 fi
 
