@@ -13,7 +13,7 @@ if [ -z ${PLUGIN_TARGET} ]; then
   PLUGIN_TARGET="/"
 fi
 
-if [ -z ${PLUGIN_SOURCE} ]; then
+if [ -z "${PLUGIN_SOURCE}" ]; then
   PLUGIN_SOURCE="./"
 fi
 
