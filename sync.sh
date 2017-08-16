@@ -1,5 +1,4 @@
 #!/bin/bash
-set -f
 
 if [ -z ${PLUGIN_BUCKET} ]; then
   echo "missing S3 Bucket"
@@ -14,17 +13,19 @@ if [ -z ${PLUGIN_TARGET} ]; then
   PLUGIN_TARGET="/"
 fi
 
-if [ -z ${PLUGIN_SOURCE} ]; then
-  PLUGIN_SOURCE="./"
+if [ -z "${PLUGIN_SOURCE}" ]; then
+  SOURCE="./"
+else
+  SOURCE=$PLUGIN_SOURCE
 fi
 
-if [ -z ${PLUGIN_EXCLUDE} ]; then
+if [ -z "${PLUGIN_EXCLUDE}" ]; then
   EXCLUDE=""
 else
   EXCLUDE="--exclude '$PLUGIN_EXCLUDE'"
 fi
 
-if [ -z ${PLUGIN_INCLUDE} ]; then
+if [ -z "${PLUGIN_INCLUDE}" ]; then
   INCLUDE=""
 else
   INCLUDE="--include '$PLUGIN_INCLUDE'"
@@ -44,9 +45,9 @@ if [ ! -z ${PLUGIN_AWS_SECRET_ACCESS_KEY} ]; then
   AWS_SECRET_ACCESS_KEY=$PLUGIN_AWS_SECRET_ACCESS_KEY
 fi
 
-echo "aws s3 sync --region $PLUGIN_REGION $PLUGIN_DELETE $EXCLUDE $INCLUDE $PLUGIN_SOURCE s3://$PLUGIN_BUCKET$PLUGIN_TARGET"
+echo "aws s3 sync --region $PLUGIN_REGION $PLUGIN_DELETE $EXCLUDE $INCLUDE $SOURCE s3://$PLUGIN_BUCKET$PLUGIN_TARGET"
 
-aws s3 sync --region $PLUGIN_REGION $PLUGIN_DELETE $EXCLUDE $INCLUDE $PLUGIN_SOURCE s3://$PLUGIN_BUCKET$PLUGIN_TARGET
+aws s3 sync --region ${PLUGIN_REGION} ${PLUGIN_DELETE} ${EXCLUDE} ${INCLUDE} ${SOURCE} s3://${PLUGIN_BUCKET}${PLUGIN_TARGET}
 
 
 if [ -n "$PLUGIN_CLOUDFRONT_DISTRIBUTION_ID" ]; then
