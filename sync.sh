@@ -31,6 +31,12 @@ else
   INCLUDE="--include '$PLUGIN_INCLUDE'"
 fi
 
+if [ -z "${PLUGIN_ACL}" ]; then
+  ACL=""
+else
+  ACL="--acl '$PLUGIN_ACL'"
+fi
+
 if [ ${PLUGIN_DELETE} == true ]; then
   PLUGIN_DELETE="--delete"
 else
@@ -47,7 +53,7 @@ fi
 
 echo "aws s3 sync --region $PLUGIN_REGION $PLUGIN_DELETE $EXCLUDE $INCLUDE $SOURCE s3://$PLUGIN_BUCKET$PLUGIN_TARGET"
 
-aws s3 sync --region ${PLUGIN_REGION} ${PLUGIN_DELETE} ${EXCLUDE} ${INCLUDE} ${SOURCE} s3://${PLUGIN_BUCKET}${PLUGIN_TARGET}
+aws s3 sync --region ${PLUGIN_REGION} ${PLUGIN_DELETE} ${EXCLUDE} ${ACL} ${INCLUDE} ${SOURCE} s3://${PLUGIN_BUCKET}${PLUGIN_TARGET}
 
 
 if [ -n "$PLUGIN_CLOUDFRONT_DISTRIBUTION_ID" ]; then
