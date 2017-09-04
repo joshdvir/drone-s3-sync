@@ -34,7 +34,7 @@ fi
 if [ -z "${PLUGIN_ACL}" ]; then
   ACL=""
 else
-  ACL="--acl '$PLUGIN_ACL'"
+  ACL="--acl $PLUGIN_ACL"
 fi
 
 if [ ${PLUGIN_DELETE} == true ]; then
