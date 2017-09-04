@@ -6,6 +6,7 @@ Use the S3 sync plugin to synchronize files and folders with an Amazon S3 bucket
 * `aws_secret_access_key` - amazon secret key
 * `bucket` - bucket name
 * `region` - bucket region. (defaults to `us-east-1`)
+* `acl`    - Sets the ACL for the object when the command is performed. (optional, eg. private, public-read, public-read-write, authenticated-read, aws-exec-read, bucket-owner-read, bucket-owner-full-control and log-delivery-write.)
 * `source` - location of folder to sync. (optional, defaults to `./`)
 * `target` - target folder in your S3 bucket. (optional, defaults to `/`)
 * `exclude`- exclude all files or objects from the command that matches the specified pattern. (optional)
@@ -19,6 +20,7 @@ The following is a sample S3 configuration in your .drone.yml file:
 pipeline:
   s3_sync:
     region: "us-east-1"
+    acl: public-read
     bucket: "my-bucket.s3-website-us-east-1.amazonaws.com"
     aws_access_key_id: "970d28f4dd477bc184fbd10b376de753"
     aws_secret_access_key: "9c5785d3ece6a9cdefa42eb99b58986f9095ff1c"
