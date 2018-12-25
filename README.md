@@ -19,6 +19,7 @@ The following is a sample S3 configuration in your .drone.yml file:
 ```yaml
 pipeline:
   s3_sync:
+    image: joshdvir/drone-s3-sync
     region: "us-east-1"
     acl: public-read
     bucket: "my-bucket.s3-website-us-east-1.amazonaws.com"
